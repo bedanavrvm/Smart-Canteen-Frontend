@@ -1,0 +1,1054 @@
+@import "tailwindcss";
+
+
+/* --- CORE PAGE LAYOUTS --- */
+
+/* Full screen page container for all main views */
+.page-container {
+  @apply min-h-screen bg-gray-50 p-4 sm:p-6 lg:p-8;
+}
+
+/* src/assets/main.css (Home Page/Landing Page Components) */
+
+/* ----------------------------------------------------------------- */
+/* 1. NAVIGATION BAR (Used for primary site navigation) */
+/* ----------------------------------------------------------------- */
+
+.main-nav {
+  /* Layout: Full width, fixed height, background, and flex container */
+  @apply sticky top-0 z-51 bg-white shadow-md p-4 flex justify-between items-center;
+
+  /* Logo Link */
+  & .nav-logo {
+    @apply text-xl font-bold text-green-600;
+  }
+
+  /* Navigation Links Wrapper (For desktop links) */
+  & .nav-links {
+    @apply hidden md:flex space-x-6;
+  }
+
+  /* Individual Navigation Links (e.g., Home, Login) */
+  & a {
+    @apply text-gray-700 hover:text-green-600 font-medium transition duration-150;
+  }
+}
+
+/* User Menu Dropdown (in Navbar) */
+.user-menu-button {
+  /* Layout and appearance */
+  @apply flex items-center space-x-2 cursor-pointer;
+}
+
+.user-avatar {
+  /* Circle with initials */
+  @apply w-8 h-8 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-sm;
+}
+
+.user-menu-button span {
+  /* User name text */
+  @apply text-gray-800 font-medium text-sm hidden sm:block;
+}
+
+.user-menu-dropdown {
+  /* Positioning and appearance */
+  @apply absolute right-0 mt-2 w-48 bg-white rounded-md shadow-xl z-50 py-1;
+  @apply border border-gray-200;
+}
+
+.user-menu-item {
+  /* Individual links/buttons in the dropdown */
+  @apply block px-4 py-2 text-sm text-gray-700;
+  @apply hover:bg-gray-100 transition duration-150;
+}
+
+/* Cart icon button specific styles */
+.cart-icon-button {
+  @apply relative;
+  /* Badge positioning */
+  & .badge { @apply absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center; }
+}
+
+/* ----------------------------------------------------------------- */
+/* 2. HERO SECTION (Main introductory block) */
+/* ----------------------------------------------------------------- */
+
+.hero-section {
+  /* Layout: Large vertical padding/height, center content */
+  @apply py-20 text-center bg-gray-50;
+
+  /* Main Headline (H1) */
+  & h1 {
+    @apply text-5xl font-extrabold text-gray-900 mb-4;
+  }
+
+  /* Subtitle/Subhead (P tag) */
+  & p {
+    @apply text-xl text-gray-600 max-w-3xl mx-auto mb-8;
+  }
+
+  /* Button Wrapper (To center multiple CTAs if needed) */
+  & .hero-actions {
+    @apply flex justify-center space-x-4;
+  }
+}
+
+
+/* ----------------------------------------------------------------- */
+/* 3. FEATURE SECTION (The existing menu grid structure) */
+/* ----------------------------------------------------------------- */
+
+.feature-section {
+    /* Apply standard section padding */
+    @apply py-12; 
+    
+    /* Nest the existing .menu-grid for content layout */
+    
+    /* Section Heading (H2) */
+    & h2 {
+        @apply text-3xl font-bold text-center text-gray-800 mb-8;
+    }
+}
+
+.menu-grid {
+  @apply max-w-6xl mx-auto ; /* Added for centering within the section */
+  @apply grid gap-6;
+  @apply grid-cols-1; 
+  @apply md:grid-cols-2; 
+  @apply lg:grid-cols-3;
+  @apply overflow-visible;
+}
+
+
+/* ----------------------------------------------------------------- */
+/* 4. SITE FOOTER */
+/* ----------------------------------------------------------------- */
+
+.site-footer {
+  /* Layout: Background, padding, text style */
+  @apply z-50 bg-gray-800 text-gray-300 p-8 mt-12 fixed bottom-0 left-0 right-0;
+
+  /* Inner container to constrain content width */
+  & .footer-content {
+    @apply max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center;
+  }
+
+  /* Copyright text */
+  & .copyright-text {
+    @apply text-sm;
+  }
+
+  /* Link Wrapper */
+  & .footer-links {
+    @apply flex space-x-4 mt-4 md:mt-0;
+  }
+
+  /* Footer Links */
+  & a {
+    @apply hover:text-green-500 transition duration-150 text-sm;
+  }
+}
+
+/* ----------------------------------------------------------------- */
+/* 5. REUSABLE CTA BUTTON (Primary Call to Action) */
+/* ----------------------------------------------------------------- */
+
+.cta-button {
+    /* Appearance, size, padding, and hover */
+    @apply bg-green-500 text-white font-semibold py-3 px-6 rounded-full transition duration-200;
+    @apply hover:bg-green-600 shadow-lg;
+}
+
+
+
+/* src/assets/main.css (Menu Card Component) */
+
+/* ----------------------------------------------------------------- */
+/* MENU CARD COMPONENT */
+/* ----------------------------------------------------------------- */
+
+.menu-card {
+  /* Container Styling */
+  @apply  bg-white rounded-xl shadow-lg transition-transform duration-300 relative;
+  
+  /* Hover Effect */
+  @apply hover:shadow-xl hover:scale-[1.02];
+
+  /* 1. Image Block (applied to the <img> tag or image wrapper) */
+  & .card-image {
+    /* Ensures the image fills the space but maintains aspect ratio */
+    @apply w-full h-48 object-cover;
+  }
+
+  /* 2. Content Body Wrapper */
+  & .card-body {
+    @apply p-6;
+  }
+
+  /* 3. Dish Title (e.g., <h2>) */
+  & h2 {
+    @apply text-xl font-bold text-gray-900 mb-2;
+  }
+
+  /* 4. Description/Price (e.g., <p>) */
+  & p {
+    @apply text-gray-600 mb-4;
+  }
+
+  /* 5. Action Button (Can reuse .cta-button or create a small one) */
+  & .card-action {
+    /* Small, dense button specifically for the card */
+    @apply inline-block bg-green-500 text-white font-semibold py-2 px-4 rounded-full text-sm;
+    @apply hover:bg-green-600 transition duration-200;
+  }
+
+  & .card-footer {
+    @apply flex justify-between items-center mt-4;
+  }
+
+  /* Popup card styling — consistent with your main.css design */
+  & .popup-card {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1e1e1e;
+    color: white;
+    border: 1px solid #333;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    width: 18rem;
+    z-index: 71;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+    margin-top: 0.5rem;
+}
+
+/* Simple fade-scale animation */
+.fade-scale-enter-active,
+.fade-scale-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.fade-scale-enter-from,
+.fade-scale-leave-to {
+  opacity: 0;
+  /* 🛑 CHANGE: Start position is slightly higher, making it slide down */
+  transform: translateY(-10px) translateX(-50%);
+}
+/* State during transition and when finished */
+.fade-scale-enter-to,
+.fade-scale-leave-from {
+  opacity: 1;
+  /* End position is the original centered position */
+  transform: translateY(0) translateX(-50%);
+}
+
+}
+
+
+
+/* src/assets/main.css (Order/Checkout Page Components) */
+
+/* ----------------------------------------------------------------- */
+/* 1. ORDER PAGE LAYOUT */
+/* ----------------------------------------------------------------- */
+
+/* Main container for the order view (applies padding and centers the content) */
+.order-page {
+  @apply max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8;
+}
+
+/* Container for the two-column checkout layout (Cart Items on left, Summary on right) */
+.checkout-layout {
+  /* Responsive grid layout */
+  @apply grid gap-10 lg:grid-cols-3;
+}
+
+/* Left column (Cart Items List) */
+.cart-list-container {
+  /* Takes up 2/3 space on large screens */
+  @apply lg:col-span-2; 
+}
+
+
+/* ----------------------------------------------------------------- */
+/* 2. ORDER SUMMARY CARD (Right Column) */
+/* ----------------------------------------------------------------- */
+
+.summary-card {
+  /* Styling for the card container */
+  @apply bg-white p-6 shadow-xl rounded-lg border border-gray-100 h-fit sticky top-20; 
+
+  /* Title */
+  & h2 {
+    @apply text-2xl font-bold text-gray-800 mb-4 pb-2 border-b border-gray-200;
+  }
+
+  /* Summary Row (e.g., Subtotal, Tax) */
+  & .summary-row {
+    @apply flex justify-between text-base text-gray-700 py-1;
+  }
+
+  /* Total Row (The final calculation) */
+  & .total-row {
+    @apply flex justify-between font-bold text-xl mt-4 pt-4 border-t-2 border-green-500;
+  }
+}
+
+
+/* ----------------------------------------------------------------- */
+/* 3. CART ITEM ROW (List of Items) */
+/* ----------------------------------------------------------------- */
+
+.cart-item-row {
+  /* Row Layout */
+  @apply flex items-center justify-between py-4 border-b border-gray-200; 
+
+  /* Item Info Container (Image, Name, Price) */
+  & .item-details {
+    @apply flex items-center space-x-4 w-1/2;
+  }
+
+  /* Item Image */
+  & .item-image {
+    @apply w-16 h-16 object-cover rounded-md;
+  }
+
+  /* Item Name/Title */
+  & h3 {
+    @apply text-lg font-medium text-gray-800;
+  }
+
+  /* Quantity Controls Wrapper */
+  & .qty-controls {
+    @apply flex items-center space-x-3;
+  }
+
+  /* Quantity Button (e.g., plus/minus) */
+  & button {
+    @apply bg-gray-200 text-gray-700 w-8 h-8 rounded-full hover:bg-gray-300 transition;
+  }
+
+  /* Price/Subtotal Display */
+  & .item-price {
+    @apply font-semibold text-lg text-gray-900;
+  }
+}
+
+  /* Sidebar transitions */
+  & .cart-sidebar {
+    @apply fixed top-20  right-0 w-120 h-full bg-white shadow-2xl z-50 p-6 overflow-y-auto transition-transform duration-500;
+    
+}
+
+  & .item-subtotal {
+    @apply font-semibold text-green-500 text-right w-24;
+}
+
+
+  & .details-modal {
+    @apply absolute top-24 left-1/2 transform -translate-x-1/2;
+    @apply flex items-start justify-center z-40;
+}
+
+  & .details-content {
+    @apply bg-white p-6 rounded-2xl shadow-2xl w-11/12 sm:w-2/3 lg:w-1/2 max-h-[85vh] overflow-y-auto;
+    @apply border border-gray-200;
+    animation: fadeInUp 0.3s ease-in-out;
+}
+
+/* ✅ Add subtle fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cart-sidebar.is-visible {
+    /* Brings the element back to its original position (0 movement) */
+    transform: translateX(0); 
+}
+
+
+/* src/assets/main.css (Payment Page Components) */
+
+/* ----------------------------------------------------------------- */
+/* 1. PAYMENT PAGE LAYOUT */
+/* ----------------------------------------------------------------- */
+
+/* Main container for the payment view (similar to order-page but specific) */
+.payment-page {
+  @apply max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8;
+}
+
+/* ----------------------------------------------------------------- */
+/* 2. PAYMENT METHOD SELECTION */
+/* ----------------------------------------------------------------- */
+
+/* Container for grouping payment method options */
+.payment-methods-group {
+  @apply mb-8;
+}
+
+/* Individual radio/checkbox option for a payment method */
+.method-option {
+  /* Layout and appearance */
+  @apply p-4 border border-gray-300 rounded-lg mb-3 cursor-pointer transition-all duration-200;
+  @apply hover:border-green-500 flex items-center justify-between;
+}
+
+/* Style for the selected method */
+.method-option.is-selected {
+  @apply border-green-600 ring-2 ring-green-200 bg-green-50;
+}
+
+
+/* ----------------------------------------------------------------- */
+/* 3. CARD FORM FIELDS (Specific Inputs) */
+/* ----------------------------------------------------------------- */
+
+/* Container for grouping card fields (like name, number, expiration) */
+.card-details-group {
+  @apply grid grid-cols-1 gap-6 sm:grid-cols-2;
+}
+
+/* Used for the section that requires two fields side-by-side (Expiry/CVV) */
+.form-split-row {
+  @apply grid grid-cols-2 gap-4;
+}
+
+/* ----------------------------------------------------------------- */
+/* 4. PAYMENT CONFIRMATION / FOOTER */
+/* ----------------------------------------------------------------- */
+
+/* Final section wrapper for totals and the final button */
+.payment-summary-footer {
+  @apply mt-10 pt-6 border-t-2 border-gray-200;
+}
+
+/* The final text for the confirmation (reusing .total-row from OrderPage) */
+.payment-summary-footer .total-row {
+  @apply mb-6; /* Adds space before the button */
+}
+
+/* The final button (reusing .primary-button from Auth pages) */
+.payment-summary-footer .primary-button {
+  @apply py-3; /* Make the final button slightly taller */
+}
+
+/* src/assets/main.css (Final Auth Section) */
+/* ----------------------------------------------------------------- */
+/* 1. CORE REUSABLE UTILITIES (Used by all forms) */
+/* ----------------------------------------------------------------- */
+
+/* Style for the actual <input>, <select>, or <textarea> field */
+.form-input {
+  /* Dimensions and Appearance */
+  @apply w-full p-3 border border-gray-300 rounded-lg;
+  /* Focus States (The green ring/border effect) */
+  @apply focus:ring-green-500 focus:border-green-500;
+}
+
+/* Style for the main action button */
+.primary-button {
+  /* Layout and Colors */
+  @apply w-full py-2 rounded-lg font-semibold;
+  /* Appearance and Hover State */
+  @apply bg-green-600 text-white hover:bg-green-700 transition duration-150;
+}
+
+
+/* ----------------------------------------------------------------- */
+/* 2. PAGE & CARD LAYOUTS (The Containers) */
+/* ----------------------------------------------------------------- */
+
+/* The main view container (used by LoginPage.vue and RegisterPage.vue) */
+.auth-page {
+  /* Layout: full screen height, centered content */
+  @apply min-h-screen bg-gray-50 flex items-center justify-center p-4; 
+}
+
+/* Dedicated card container for the LOGIN form (max-w-md for smaller card) */
+.login-card {
+  @apply max-w-md mx-auto p-8 bg-white shadow-xl rounded-lg border border-gray-200;
+}
+
+/* Dedicated card container for the REGISTER form (max-w-lg for wider card) */
+.register-card {
+  @apply max-w-lg mx-auto p-8 bg-white shadow-xl rounded-lg border border-gray-200;
+}
+
+
+/* --- 1. ALERT/MESSAGE BOXES --- */
+
+/* Base style for all alerts */
+.app-alert {
+  /* Heavy @apply usage for all styling, including spacing and shape */
+  @apply flex items-center p-4 rounded-lg shadow-md space-x-3 text-sm;
+}
+
+/* Success Alert (Green) */
+.alert-success {
+  @apply bg-green-100 text-green-700 border border-green-300;
+}
+
+/* Error Alert (Red) */
+.alert-error {
+  @apply bg-red-100 text-red-700 border border-red-300;
+}
+
+/* Info Alert (Blue) */
+.alert-info {
+  @apply bg-blue-100 text-blue-700 border border-blue-300;
+}
+
+
+/* --- 2. FORM STATES (DISABLED/LOADING) --- */
+
+/* Disabled state for the primary button */
+.primary-button.is-disabled {
+  @apply opacity-50 cursor-not-allowed;
+
+  /* Override the default hover to maintain the disabled appearance */
+  &:hover {
+    @apply bg-green-600; /* Reverts hover to base color */
+  }
+}
+
+/* Disabled state for form inputs/selects (assuming a base .form-input exists) */
+.form-input.is-disabled {
+  @apply bg-gray-100 text-gray-500 cursor-not-allowed;
+
+  /* Explicitly remove focus styles */
+  &:focus {
+    @apply border-gray-300 shadow-none;
+  }
+}
+
+/* Optional: Loading State */
+.is-loading {
+  @apply cursor-wait;
+}
+
+
+/* --- 3. UTILITY CONTAINER --- */
+
+.content-wrapper {
+  /* Heavy @apply usage for dimensions, margins, and padding */
+  @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+
+/* src/assets/main.css (Sidebar Navigation Component - ABSOLUTE FINAL AND ROBUST) */
+
+@layer components {
+  
+  /* 1. Main container for the sidebar navigation */
+  .app-sidebar {
+    @apply bg-gray-900 text-gray-200 w-64 h-screen p-4
+           sticky top-0 flex flex-col space-y-2 
+           transition-transform duration-300;
+  }
+
+  /* 2. Individual Nav Item (Basic Link) */
+  .sidebar-item {
+    @apply flex items-center p-3 rounded-lg text-base font-medium
+           transition duration-150 cursor-pointer
+           hover:bg-gray-700;
+  }
+
+  /* 3. Dropdown Toggle Item (Parent that controls the collapse) */
+  .sidebar-dropdown-toggle {
+    /* Reverting to @apply sidebar-item is risky, so we apply all base utilities again
+       and add justify-between */
+    @apply flex items-center p-3 rounded-lg text-base font-medium
+           transition duration-150 cursor-pointer justify-between
+           hover:bg-gray-700;
+  }
+
+  /* 4. Dropdown Menu (The list of sub-links) */
+  .sidebar-submenu {
+    @apply ml-6 mt-1 space-y-1; 
+  }
+
+  /* 5. Submenu Item (Child Link) */
+  .submenu-item {
+    @apply block p-2 rounded-lg text-sm
+           transition duration-150 
+           hover:bg-gray-700;
+  }
+
+  /* Style for the active/selected item */
+  .is-active {
+    @apply bg-green-600 hover:bg-green-700 text-white;
+  }
+
+  /* Style for the chevron/icon when the menu is open */
+  .chevron-rotated {
+    @apply transform rotate-90 transition duration-200;
+  }
+}
+
+
+/* ----------------------------------------------------------------- */
+/* ACCOUNT & PROFILE PAGE STYLES */
+/* ----------------------------------------------------------------- */
+
+.profile-section {
+  @apply bg-white rounded-lg shadow-md p-6 mb-6;
+}
+
+.user-avatar-large {
+  @apply w-20 h-20 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600;
+  @apply text-white flex items-center justify-center text-3xl font-bold;
+}
+
+.profile-header {
+  @apply flex items-center mb-6;
+}
+
+.profile-info {
+  @apply ml-4;
+}
+
+.profile-name {
+  @apply text-2xl font-semibold text-gray-900;
+}
+
+.profile-role {
+  @apply text-gray-600;
+}
+
+.form-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+}
+
+.form-group {
+  @apply mb-4;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-gray-700 mb-2;
+}
+
+.button-group {
+  @apply mt-6 flex gap-4;
+}
+
+.secondary-button {
+  @apply px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold;
+  @apply hover:bg-gray-300 transition duration-200;
+}
+
+.password-section {
+  @apply bg-white rounded-lg shadow-md p-6;
+}
+
+.section-title {
+  @apply text-xl font-semibold mb-4 text-gray-800;
+}
+
+
+/* ----------------------------------------------------------------- */
+/* ORDERS PAGE STYLES */
+/* ----------------------------------------------------------------- */
+
+.orders-page {
+  @apply max-w-6xl mx-auto py-8 px-4;
+}
+
+.page-title {
+  @apply text-3xl font-bold mb-6 text-gray-900;
+}
+
+.empty-state {
+  @apply bg-white rounded-lg shadow-md p-10 text-center;
+}
+
+.empty-icon {
+  @apply text-6xl mb-4;
+}
+
+.empty-title {
+  @apply text-2xl font-semibold mb-2 text-gray-800;
+}
+
+.empty-message {
+  @apply text-gray-600 mb-6;
+}
+
+.orders-list {
+  @apply space-y-6;
+}
+
+.order-card {
+  @apply bg-white rounded-lg shadow-md p-6;
+}
+
+.order-header {
+  @apply flex justify-between items-start mb-4 pb-4 border-b border-gray-200;
+}
+
+.order-id {
+  @apply text-xl font-semibold text-gray-900 mb-1;
+}
+
+.order-date {
+  @apply text-gray-600 text-sm;
+}
+
+.order-status {
+  @apply inline-block px-3 py-1 rounded-full text-sm font-medium;
+}
+
+.status-pending { @apply bg-yellow-100 text-yellow-800; }
+.status-confirmed { @apply bg-blue-100 text-blue-800; }
+.status-preparing { @apply bg-purple-100 text-purple-800; }
+.status-ready { @apply bg-green-100 text-green-800; }
+.status-completed { @apply bg-gray-100 text-gray-800; }
+.status-cancelled { @apply bg-red-100 text-red-800; }
+
+.order-total {
+  @apply text-xl font-bold text-gray-900 mt-2;
+}
+
+.order-items {
+  @apply space-y-3 mb-4;
+}
+
+.order-item {
+  @apply flex items-center gap-4;
+}
+
+.order-item-image {
+  @apply w-16 h-16 object-cover rounded;
+}
+
+.order-item-name {
+  @apply font-semibold text-gray-900;
+}
+
+.order-item-quantity {
+  @apply text-sm text-gray-600;
+}
+
+.order-item-price {
+  @apply font-semibold text-gray-900;
+}
+
+.order-item-subtotal {
+  @apply text-sm text-gray-600;
+}
+
+.order-actions {
+  @apply flex gap-3 pt-4 border-t border-gray-200;
+}
+
+.nav-auth-link {
+  @apply text-gray-700 hover:text-green-600 font-medium transition duration-150;
+  @apply px-4 py-2 rounded-lg;
+}
+
+.nav-auth-link.primary {
+  @apply bg-green-500 text-white hover:bg-green-600;
+}
+
+
+/* ----------------------------------------------------------------- */
+/* CHECKOUT PAGE STYLES */
+/* ----------------------------------------------------------------- */
+
+.checkout-page {
+  @apply max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8;
+}
+
+.checkout-grid {
+  @apply grid gap-8 lg:grid-cols-3;
+}
+
+.checkout-main {
+  @apply lg:col-span-2;
+}
+
+.checkout-sidebar {
+  @apply lg:col-span-1;
+}
+
+.checkout-section {
+  @apply bg-white rounded-lg shadow-md p-6 mb-6;
+}
+
+.section-header {
+  @apply text-2xl font-bold text-gray-800 mb-4 pb-2 border-b border-gray-200;
+}
+
+
+/* ----------------------------------------------------------------- */
+/* CART SIDEBAR STYLES */
+/* ----------------------------------------------------------------- */
+
+.cart-header {
+  @apply flex justify-between items-center mb-4;
+}
+
+.cart-title {
+  @apply text-2xl font-bold text-gray-900;
+}
+
+.cart-close-btn {
+  @apply text-gray-500 hover:text-gray-700 text-3xl font-light;
+  @apply transition duration-150 cursor-pointer;
+}
+
+.summary-title {
+  @apply text-xl font-semibold text-gray-800;
+}
+
+.checkout-btn {
+  @apply mt-4 w-full block text-center;
+}
+
+.empty-cart {
+  @apply text-center py-10 text-gray-600;
+}
+
+
+/* ----------------------------------------------------------------- */
+/* STAFF MENU MANAGEMENT PAGE STYLES */
+/* ----------------------------------------------------------------- */
+
+.loading-state-container {
+  @apply text-center py-10;
+}
+
+.loading-state-text {
+  @apply text-gray-600;
+}
+
+.form-helper-text {
+  @apply text-sm text-gray-500 mt-1;
+}
+
+.modal-warning-text {
+  @apply text-sm text-gray-500 mt-2;
+}
+
+
+/* ----------------------------------------------------------------- */
+/* OUT OF STOCK / UNAVAILABLE ITEM STYLES */
+/* ----------------------------------------------------------------- */
+
+/* Image Container for overlay positioning */
+.image-container,
+.image-wrapper {
+  @apply relative w-full overflow-hidden;
+}
+
+.image-container .card-image,
+.image-wrapper .details-image {
+  @apply w-full object-cover transition-transform duration-300;
+}
+
+/* Ensure consistent card image height */
+.image-container {
+  @apply h-48;
+}
+
+.image-wrapper {
+  @apply rounded-lg;
+}
+
+.image-wrapper .details-image {
+  @apply max-h-[500px] h-auto;
+}
+
+/* Out of stock overlay */
+.out-of-stock-overlay {
+  @apply absolute inset-0 flex items-center justify-center z-10;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.overlay-content {
+  @apply flex flex-col items-center gap-2 text-center p-4;
+}
+
+.overlay-icon {
+  @apply text-5xl;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.overlay-text {
+  @apply text-xl font-bold text-white uppercase tracking-wider;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  @apply px-4 py-2 rounded-lg shadow-lg;
+}
+
+/* Unavailable notice (for detail pages) */
+.unavailable-notice {
+  @apply flex items-center gap-2 p-4 bg-yellow-100 border-2 border-yellow-400 rounded-lg text-yellow-900 font-semibold my-4;
+}
+
+.notice-icon {
+  @apply text-2xl;
+}
+
+/* Unavailable button styling */
+.unavailable-button {
+  @apply bg-gray-400 opacity-60 cursor-not-allowed;
+}
+
+.unavailable-button:hover {
+  @apply bg-gray-400 transform-none;
+}
+
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* ----------------------------------------------------------------- */
+/* MENU FILTERING STYLES - SIDEBAR */
+/* ----------------------------------------------------------------- */
+
+/* Dashboard Layout Container */
+.dashboard-layout {
+  @apply flex;
+}
+
+/* Filter Sidebar */
+.filter-sidebar {
+  @apply w-0 bg-white shadow-lg overflow-hidden;
+  @apply transition-all duration-300 ease-in-out;
+  @apply flex-shrink-0;
+  @apply border-r border-gray-200;
+  max-height: calc(100vh - 100px);
+}
+
+.filter-sidebar.open {
+  @apply w-80 overflow-y-auto;
+}
+
+/* Main Content Area */
+.main-content-area {
+  @apply flex-1 transition-all duration-300;
+  @apply min-w-0;
+}
+
+/* Menu Controls Section */
+.menu-controls {
+  @apply flex items-center gap-4 mb-6 mt-4;
+}
+
+.filter-toggle-btn {
+  @apply flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg;
+  @apply hover:bg-green-700 transition-colors duration-200;
+  @apply font-medium relative;
+}
+
+.filter-toggle-btn span:first-child {
+  @apply text-lg;
+}
+
+.filter-badge {
+  @apply absolute -top-2 -right-2 bg-red-500 text-white text-xs;
+  @apply w-5 h-5 rounded-full flex items-center justify-center;
+  @apply font-bold;
+}
+
+/* Sidebar Content */
+.filter-sidebar-content {
+  @apply p-6;
+}
+
+/* Sidebar Header */
+.filter-sidebar-header {
+  @apply flex justify-between items-center mb-6 pb-4 border-b-2 border-gray-200;
+}
+
+.filter-sidebar-header h3 {
+  @apply text-2xl font-bold text-gray-800;
+}
+
+.close-sidebar-btn {
+  @apply text-gray-500 hover:text-gray-700 text-2xl;
+  @apply w-8 h-8 flex items-center justify-center;
+  @apply hover:bg-gray-100 rounded-full transition-colors duration-200;
+}
+
+/* Active Filters Info */
+.active-filters-info {
+  @apply flex justify-between items-center mb-4 p-3;
+  @apply bg-green-50 border border-green-200 rounded-lg;
+}
+
+.active-filters-info span {
+  @apply text-sm font-medium text-green-700;
+}
+
+.clear-filters-btn {
+  @apply text-sm text-red-600 hover:text-red-700 font-medium;
+  @apply transition-colors duration-200;
+}
+
+/* Filter Groups */
+.filter-group {
+  @apply mb-5 last:mb-0;
+}
+
+.filter-group-title {
+  @apply text-xs font-bold text-gray-500 mb-2 uppercase tracking-wider;
+}
+
+.filter-chips {
+  @apply flex flex-wrap gap-2;
+}
+
+/* Filter Chips */
+.filter-chip {
+  @apply px-3 py-1.5 rounded-full text-xs font-medium;
+  @apply border-2 border-gray-300 bg-white text-gray-700;
+  @apply hover:border-green-500 hover:bg-green-50;
+  @apply transition-all duration-200;
+  @apply cursor-pointer;
+}
+
+.filter-chip.active {
+  @apply border-green-600 bg-green-600 text-white;
+  @apply hover:bg-green-700 hover:border-green-700;
+}
+
+.filter-chip:hover {
+  @apply transform scale-105;
+}
+
+/* Results Info */
+.results-info {
+  @apply text-sm text-gray-600 font-medium;
+  @apply bg-gray-100 px-3 py-1.5 rounded-full;
+}
+
+/* No Results */
+.no-results {
+  @apply text-center py-12;
+}
+
+.no-results p {
+  @apply text-gray-500 text-lg mb-4;
+}
+
+/* Loading Text */
+.loading-text {
+  @apply text-center py-12 text-gray-500 text-lg;
+}
